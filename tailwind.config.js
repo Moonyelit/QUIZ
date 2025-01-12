@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+
+
   // Chemins où Tailwind doit rechercher les classes
-    content: [
-      './index.php',
-      './source/**/*.php',
-    ],
+  content: ["./*.{html,js,css,php}", "./src/**/*.{html,js,css,php}"],
   theme: {
     extend: {
       colors: {
@@ -52,6 +51,9 @@ module.exports = {
     },
   },
 
+
+
+  
   // Ajout des plugins personnalisés
   plugins: [
     function ({ addComponents }) {
