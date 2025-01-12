@@ -48,6 +48,10 @@ module.exports = {
           "100%": { backgroundPosition: "50px 50px" },
         },
       },
+      screens: {
+        'custom-500': '500px', // Ajout d'un breakpoint personnalisé pour 500px
+      },
+
     },
   },
 
@@ -85,9 +89,9 @@ module.exports = {
       addUtilities(
         {
           ".text-stroke": {
-            "-webkit-text-stroke": "4.5px #6E433C",
+            "-webkit-text-stroke": "7.5px #6E433C",
             color: "#FEFBE8",
-            "font-size": "4rem",
+            "font-size": "5rem",
             "line-height": "1",
           },
         },
