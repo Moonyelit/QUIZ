@@ -3,7 +3,7 @@ module.exports = {
 
 
   // Chemins où Tailwind doit rechercher les classes
-  content: ["./*.{html,js,css,php}", "./src/**/*.{html,js,css,php}"],
+  content: ["./*.{html,js,css,php}", "./src/**/*.{html,js,css,php}", "./Front-html/**/*.html"],
   theme: {
     extend: {
       colors: {
