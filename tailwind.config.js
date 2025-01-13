@@ -82,6 +82,16 @@ module.exports = {
         ".btn-custom2:focus": {
           "@apply bg-[#541A25]": {},
         },
+        ".btn-custom3": {
+          "@apply m-5 p-5 bg-secondary text-darkprimary rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg":
+            {},
+        },
+        ".btn-custom3:hover": {
+          "@apply bg-[#E7C298]": {},
+        },
+        ".btn-custom3:focus": {
+          "@apply bg-[#E7C298]": {},
+        },
       });
     },
 
@@ -93,6 +103,12 @@ module.exports = {
             color: "#FEFBE8",
             "font-size": "5rem",
             "line-height": "1",
+          },
+          ".progress-bar": {
+            "@apply bg-darkprimary": {},
+          },
+          ".progress-bar-bg": {
+            "@apply bg-light": {},
           },
         },
         ["responsive", "hover"]

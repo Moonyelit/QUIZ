@@ -53,13 +53,37 @@ body::before {
 }
 
 .bg-primary {
-    background-color: #6E433C; /* Remplacez cette couleur par celle que vous souhaitez */
+    background-color: #6E433C; 
 }
 
 .bg-darkprimary {
-    background-color: #541A25; /* Remplacez cette couleur par celle que vous souhaitez */
+    background-color: #541A25;
 }
 
 .text-darkprimary {
-    color: #6E433C; /* Assurez-vous que cette couleur correspond à votre couleur darkprimary */
+    color: #541A25; 
+}
+
+.btn-custom2 {
+    @apply m-5 p-5 bg-secondary text-darkprimary rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg;
+}
+
+.btn-custom2:hover {
+    @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
+}
+
+.btn-custom2:focus {
+    @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
+}
+
+.btn-custom3 {
+    @apply m-5 p-5 bg-secondary text-darkprimary rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg;
+}
+
+.btn-custom3:hover {
+    @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
+}
+
+.btn-custom3:focus {
+    @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
 }
