@@ -4,42 +4,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page 3</title>
+    <title>QUIZ || </title>
     <link rel="stylesheet" href="../assets/output.css">
     <link href="../assets/style.css" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        progress {
+            background-color: #541A25;        }
+        progress::-webkit-progress-bar {
+            background-color: #541A25;
+        }
+        progress::-webkit-progress-value {
+            background-color: var(--light-color);
+        }
+        progress::-moz-progress-bar {
+            background-color: var(--light-color);
+        }
+    </style>
 </head>
 
-<body class="fond-quadrille animate-bg-scroll overflow-x-hidden bg-[#6E433C] bg-opacity-50">
+<body class="fond-quadrille animate-bg-scroll overflow-x-hidden bg-[#6E433C] bg-opacity-50 min-h-screen">
     <!-- Ajout d'une div avec une couleur de fond et une opacité de 40% -->
-    <div class="absolute inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-screen w-full"></div>
+    <div class="fixed inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-full w-full"></div>
 
     <!-- Section principale -->
     <section
-        class="relative h-full max-w-full m-10 p-3 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px]">
+        class="relative h-full max-w-full my-[39px] mx-[30px] p-2 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px]">
         <!-- Image en haut de la section -->
-        <div class="absolute top-[-1rem] left-0 w-full flex justify-center items-start">
-            <img src="../images/Phone - Quiz question/Group 32.png" alt="Image décorative" class="w-[120%] max-w-none">
-        </div>
 
+        <header>
+            <!-- *****************************************************************************************************************
+         *********************************************************************************************************************
+         ***************************************************************************************************** VERSION TELEPHONE -->
+            <section class="top-0 left-0 lg:hidden mb-[5%] z-2 ">
+                <!-- Conteneur principal -->
+                <div class="relative h-[170px] w-full overflow-hidden sm:h-[140px] md:h-[160px] z-index-2 sm:h-[220px] md:h-[230px]">
+                    <div class="relative w-full h-[90%] z-2">
+                        <!-- Polygone 1 -->
+                        <div class="absolute top-[7px] left-[5%] animate-float sm:top-[10px] sm:left-[6%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut gauche/P-1.png" alt="Polygone 1"
+                                class="sm:w-[120px] md:w-[155px] lg:hidden">
+                        </div>
+                        <!-- Polygone 2 -->
+                        <div class="absolute top-[7px] left-[27%] animate-float2 md:left-[30%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut gauche/P-2.png" alt="Polygone 2"
+                                class="sm:w-[120px] md:w-[150px] lg:hidden">
+                        </div>
+                        <!-- Polygone 3 -->
+                        <div class="absolute top-[7px] left-[55%] animate-float sm:left-[57%] ">
+                            <img src="../images/Phone - Quiz sélection/Déco haut droite/P-5.png" alt="Polygone 3"
+                                class="sm:w-[150px] md:w-[180px] lg:hidden">
+                        </div>
+                        <!-- Polygone 4 -->
+                        <div class="absolute top-[7px] left-[92%] animate-float2 sm:left-[85%] md:left-[87%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut droite/P-3.png" alt="Polygone 4"
+                                class="sm:w-[60px] md:w-[70px] lg:hidden">
+                        </div>
+                        <!-- Polygone 5 -->
+                        <div class="absolute top-[10%] left-[5%] animate-float2 sm:left-[7%] sm:top-[35%] md:top-[28%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut gauche/P-3.png" alt="Polygone 5"
+                                class="sm:w-[80px] md:w-[90px] lg:hidden">
+                        </div>
+                        <!-- Polygone 6 -->
+                        <div class="absolute top-[45%] left-[27%] animate-float sm:top-[50%] md:top-[45%] left-[23%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut gauche/P-4.png" alt="Polygone 6"
+                                class="sm:w-[100px] md:w-[120px] lg:hidden">
+                        </div>
+                        <!-- Polygone 7 -->
+                        <div class="absolute top-[30%] left-[55%] animate-float2 sm:left-[57%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut droite/P-4.png" alt="Polygone 7"
+                                class="sm:w-[120px] md:w-[150px] lg:hidden">
+                        </div>
+                        <!-- Polygone 8 -->
+                        <div class="absolute top-[47%] left-[35%] animate-float2 sm:left-[40%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut droite/P-6.png" alt="Polygone 8"
+                                class="md:w-[150px] lg:hidden">
+                        </div>
+                        <!-- Polygone 9 -->
+                        <div class="absolute top-[48%] left-[82%] animate-float md:left-[75%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut droite/P-2.png" alt="Polygone 9"
+                                class="md:w-[100px] lg:hidden">
+                        </div>
+                        <!-- Polygone 10 -->
+                        <div class="absolute top-[78%] left-[82%] animate-float2 md:top-[80%]">
+                            <img src="../images/Phone - Quiz sélection/Déco haut droite/P-1.png" alt="Polygone 10"
+                                class="lg:hidden">
+                        </div>
+                        <!-- Polygone 11 -->
+                        <div class="absolute top-[65%] left-[5%] animate-float2 md:top-[60%]">
+                            <img src="../images/Phone - Quiz question/Décoration haut gauche/P-6.png" alt="Polygone 10"
+                                class="sm:w-[70px] z-2 lg:hidden">
+                        </div>
+                        <!-- Polygone 12 -->
+                        <div class="absolute top-[75%] left-[20%] animate-float sm:top-[60%] md:top-[78%] md:left-[15%] ">
+                            <img src="../images/Phone - Quiz question/Décoration haut gauche/P-5.png" alt="Polygone 10"
+                                class="sm:w-[60px] md:w-[80px] z-2 lg:hidden">
+                        </div>
 
-        <header class="mt-[45%] mb-10 flex items-center gap-[15%]">
-            <div class="relative">
-                <img src="../images/Phone - Quiz question/Décoration haut gauche/Question.png" alt="Numéro question"
-                    class="scale-120">
-                <div class="absolute inset-0 flex justify-center items-center mt-7">
-                    <span class="text-light font-changa text-6xl">1</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- *****************************************************************************************************************
+     *********************************************************************************************************************
+     ***************************************************************************************************** VERSION ORDINATEUR -->
+
+            <!-- HAUT A GAUCHE -->
+            <section class="hidden lg:block top-0 left-0">
+                <!-- Conteneur principal -->
+                <div class="absolute h-[260px] w-full max-w-[250px] overflow-hidden top-0 left-0">
+                    <div class="relative w-full h-[100%]">
+                        <!-- Polygone 1 -->
+                        <div class="absolute top-[5%] left-[5%] animate-float">
+                            <img src="../images/Desktop - Quiz selection/Deco haut gauche/P-1.png" alt="Polygone 1"
+                                class="hidden lg:block">
+                        </div>
+                        <!-- Polygone 2 -->
+                        <div class="absolute top-[5%] left-[43%] animate-float2">
+                            <img src="../images/Desktop - Quiz selection/Deco haut gauche/P-2.png" alt="Polygone 2"
+                                class="hidden lg:block">
+                        </div>
+                        <!-- Polygone 3 -->
+                        <div class="absolute top-[25%] left-[5%] animate-float2">
+                            <img src="../images/Desktop - Quiz selection/Deco haut gauche/P-4.png" alt="Polygone 3"
+                                class="hidden lg:block">
+                        </div>
+                        <!-- Polygone 4 -->
+                        <div class="absolute top-[45%] left-[43%] animate-float">
+                            <img src="../images/Desktop - Quiz selection/Deco haut gauche/P-3.png" alt="Polygone 4"
+                                class="hidden lg:block">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HAUT A DROITE -->
+            <section class="hidden lg:block top-0 right-0">
+                <!-- Conteneur principal -->
+                <div class="absolute h-[250px] w-full max-w-[250px] overflow-hidden top-0 right-0">
+                    <div class="relative w-full h-[100%]">
+                        <!-- Polygone 1 -->
+                        <div class="absolute top-[5%] left-[0%] animate-float">
+                            <img src="../images/Desktop - Quiz selection/Deco haut droite/P-2.png" alt="Polygone 1"
+                                class="hidden lg:block">
+                        </div>
+                        <!-- Polygone 2 -->
+                        <div class="absolute top-[5%] left-[68%] animate-float2">
+                            <img src="../images/Desktop - Quiz selection/Deco haut droite/P-3.png" alt="Polygone 2"
+                                class="hidden lg:block">
+                        </div>
+                        <!-- Polygone 3 -->
+                        <div class="absolute top-[25%] left-[0%] animate-float2">
+                            <img src="../images/Desktop - Quiz selection/Deco haut droite/P-1.png" alt="Polygone 3"
+                                class="hidden lg:block">
+                        </div>
+                        <!-- Polygone 4 -->
+                        <div class="absolute top-[35%] left-[55%] animate-float">
+                            <img src="../images/Desktop - Quiz selection/Deco haut droite//P-4.png" alt="Polygone 4"
+                                class="hidden lg:block">
+                        </div>
+                        <div class="absolute top-[65%] left-[43%] animate-float2">
+                            <img src="../images/Desktop - Quiz selection/Deco haut droite//P-5.png" alt="Polygone 5"
+                                class="z-2 hidden lg:block">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="flex relative top-[-2rem] items-center h-[100px] w-full">
+                <div class="w-[100px] h-[100px] sm:ml-6" >
+                    <img src="../images/Phone - Quiz question/Décoration haut gauche/Question.png" alt="Numéro question"
+                        class="top-[13%] left-[5%] lg:hidden">
+                    <h4 class="absolute z-1 top-[35%] left-[2rem] text-light font-changa text-6xl sm:ml-6">1</h4>
+                    <h5 class="absolute top-[10%] left-[4rem] text-light font-changa text-lg mt-3 sm:ml-6">
+                        /6
+                    </h5>
+
                 </div>
 
-                <!-- Texte '/6' en haut à droite de l'image -->
-                <div class="absolute top-0 right-0 p-2 text-light font-changa text-lg mt-3">
-                    /6
-                </div>
-            </div>
+                <h1 class="ml-[25%] font-changa text-primary text-2xl sm:text-4xl md:text-5xl lg:text-6xl">Jeux Vidéo</h1>
+
+            </section>
+
+
+
+
 
             <!-- "Jeux Vidéo" centré sur la droite -->
-            <h1 class="font-changa text-[2.25em] text-primary">Jeux Vidéo</h1>
         </header>
 
 
@@ -47,7 +199,7 @@
 
 
         <article class="m-4">
-            <div class="bg-red-500 text-light font-chara rounded-lg p-6 mb-5">
+            <div class="bg-darkprimary text-light font-changa text-[1.25rem] rounded-lg p-6 mb-5">
                 Ma superbe question ici là même !
             </div>
 
@@ -55,19 +207,19 @@
             <!-- LES REPONSES -->
             <div class="flex flex-col mx-3 gap-5 mb-5">
                 <!-- 1 -->
-                <div class="bg-blue-300 text-light font-chara rounded-lg p-6">
+                <div class="bg-primary text-light font-chara rounded-lg p-6">
                     Réponse 1
                 </div>
-                  <!-- 2 -->
-                  <div class="bg-blue-300 text-light font-chara rounded-lg p-6">
+                <!-- 2 -->
+                <div class="bg-primary text-light font-chara rounded-lg p-6">
                     Réponse 2
                 </div>
-                  <!-- 3 -->
-                  <div class="bg-blue-300 text-light font-chara rounded-lg p-6">
+                <!-- 3 -->
+                <div class="bg-primary text-light font-chara rounded-lg p-6">
                     Réponse 3
                 </div>
-                  <!-- 4 -->
-                  <div class="bg-blue-300 text-light font-chara rounded-lg p-6">
+                <!-- 4 -->
+                <div class="bg-primary text-light font-chara rounded-lg p-6">
                     Réponse 4
                 </div>
             </div>
@@ -78,22 +230,17 @@
         </article>
 
 
-
-        <footer>
+        <footer class="mb-4">
             <div class="mb-4">
-                <label for="timer" class="text-lg font-bold">Temps :</label>
-                <progress id="timer" value="0" max="100" class="w-full h-5 rounded-full bg-red-600">
-                    <div class="bg-[#6E433C] h-full rounded-lg"></div>
-                </progress>
+                <label for="timer" class="text-2xl font-bold text-darkprimary">Temps :</label>
+                <progress id="timer" value="0" max="100" class="w-full h-5 rounded-full"></progress>
             </div>
-        
-            <div class="flex justify-center items-center gap-4 text-red-600">
+
+            <div class="flex flex-col justify-center items-center text-darkprimary">
                 <span class="font-bold text-3xl">"PLAYER"</span>
-                <br>
-                <span id="score" class="text-lg">Votre score : 0 pts</span>
+                <span id="score" class="text-xl">Votre score : 0 pts</span>
             </div>
         </footer>
-        
 
     </section>
 </body>
