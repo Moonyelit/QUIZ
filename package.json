@@ -1,17 +1,7 @@
 {
-  "name": "g404_tp_grpe-quiz",
-  "version": "1.0.0",
-  "description": "Application ludique et interactive de quiz entre joueurs.",
-  "main": "index.js",
-  "scripts": {
-    "build:css": "tailwindcss build -i ./assets/style.css -o ./assets/output.css --watch"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^4.0.6"
   }
 }
