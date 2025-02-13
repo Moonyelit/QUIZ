@@ -3,6 +3,9 @@
 @import 'tailwindcss/utilities';
 
 
+/* FONTS  */
+@import url('https://fonts.googleapis.com/css2?family=Changa+One&family=Rubik:wght@400;500;700&display=swap');
+
 
 /* COULEURS */
 :root {
@@ -19,49 +22,49 @@
   }
 
 
-  /* ANIMATION FOND D'ECRAN */
+/* ANIMATION FOND D'ECRAN */
 /* Animations */
 @keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 50px 50px;
-    }
+  100% {
+    background-position: 50px 50px;
   }
-  
-  /* Styles principaux */
-  body {
-    margin-top: 13.5rem;
-    font: 400 16px/1.5 'exo', ubuntu, "segoe ui", helvetica, arial, sans-serif;
-    text-align: center;
-  
-    /* Image 50x50 */
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
-  
-    animation: bg-scrolling-reverse 0.92s infinite linear;
-  }
+}
 
-  body::before {
-    font-size: 8rem;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .full-height-section {
-    height: 100vh; /* Prend 100% de la hauteur de l'écran */
-  }
-  
-  .bg-primary {
-      background-color: #6E433C; 
-  }
-  
-  .bg-darkprimary {
-      background-color: #541A25;
-  }
-  
-  .text-darkprimary {
-      color: #541A25; 
-  }
+/* Styles principaux */
+body {
+  margin-top: 13.5rem;
+  font: 400 16px/1.5 'exo', ubuntu, "segoe ui", helvetica, arial, sans-serif;
+  text-align: center;
 
-  .btn-custom2 {
+  /* Image 50x50 */
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
+
+  animation: bg-scrolling-reverse 0.92s infinite linear;
+}
+
+body::before {
+  font-size: 8rem;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.full-height-section {
+  height: 100vh; /* Prend 100% de la hauteur de l'écran */
+}
+
+.bg-primary {
+    background-color: #6E433C; 
+}
+
+.bg-darkprimary {
+    background-color: #541A25;
+}
+
+.text-darkprimary {
+    color: #541A25; 
+}
+
+.btn-custom2 {
     @apply m-5 p-5 bg-secondary text-darkprimary rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg;
 }
 
