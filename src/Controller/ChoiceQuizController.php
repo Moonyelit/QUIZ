@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Quiz;
 use App\Entity\Score;
-use App\Service\SlugGenerator;
+use App\Service\SlugGeneratorService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -14,9 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ChoiceQuizController extends AbstractController
 {
-    private SlugGenerator $slugGenerator;
+    private SlugGeneratorService $slugGenerator;
 
-    public function __construct(SlugGenerator $slugGenerator)
+    public function __construct(SlugGeneratorService $slugGenerator)
     {
         $this->slugGenerator = $slugGenerator;
     }
