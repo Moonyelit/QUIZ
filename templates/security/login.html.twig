@@ -1,46 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}QUIZ || PAGE D'ACCUEIL{% endblock %}
-
-
-
-
-{% block body %}
-    <section class="relative h-screen max-w-full lg:h-[calc(100vh-20px)] m-10 p-10 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px] 
-    lg:mx-[5%] lg:my-[2%] overflow-y-hidden box-border items-center">
-
-
-
-    {% block header %}
-        {% include "header/headerHome.html.twig" %}
-    {% endblock %}
-
-
-
-        {% block main %}
-                <form action="../process/connexion_process.php" method="post"
-                    class="flex flex-col justify-center items-center w-full lg:w-1/2 lg:mx-auto lg:my-auto lg:flex lg:flex-col lg:justify-center lg:items-center">
-                    <label for="pseudo" class="font-changa text-3xl lg:text-5xl">Votre pseudo</label>
-                    <input type="text" id="pseudo" name="pseudo"
-                        class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3"
-                        placeholder="Votre pseudo ici" required>
-
-                    <button type="submit"
-                        class="flex w-[103px] h-[40px] lg:w-[25%] lg:h-[60px] align-middle gap-[10px] flex-shrink-0 font-changa text-lg lg:text-2xl text-black rounded-[17px] shadow-lg mt-4 justify-center items-center hover:bg-darkprimary"
-                        style="background-color: var(--primary-color);">
-
-                        Valider
-                    </button>
-                </form>
-        {% endblock %}
-
-
-
-    {% block footer %}
-        {% include "footer/footerHome.html.twig" %}
-    {% endblock %}
-    
-     </section>
-   
+{% block title %}QUIZ || PAGE D'ACCUEIL
 {% endblock %}
 
+{% block body %}
+	<section class="relative h-screen max-w-full lg:h-[calc(100vh-20px)] m-10 p-10 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px]
+						    lg:mx-[5%] lg:my-[2%] overflow-y-hidden box-border items-center">
+
+		{% block header %}
+			{% include "header/headerHome.html.twig" %}
+		{% endblock %}
+
+		{% block main %}
+			<form action="{{ path('app_login') }}" method="post" class="flex flex-col justify-center items-center w-full lg:w-1/2 lg:mx-auto lg:my-auto lg:flex lg:flex-col lg:justify-center lg:items-center">
+				<label for="pseudo" class="font-changa text-3xl lg:text-5xl">Votre pseudo</label>
+				<input type="text" id="pseudo" name="_username" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre pseudo ici" required>
+
+				<label for="password" class="font-changa lg:text-5xl" style="font-size: 1.75rem">Votre mot de passe</label>
+				<input type="password" id="password" name="_password" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre mot de passe ici" required>
+
+				<button type="submit" class="btn-custom">
+					Valider
+				</button>
+			</form>
+
+            <p class="mb-3">Pas encore de compte ?</p>
+            <a href="{{ path('app_register') }}" class="btn-custom">Inscription</a>
+		{% endblock %}
+
+		{% block footer %}
+			{% include "footer/footerHome.html.twig" %}
+		{% endblock %}
+
+	</section>
+{% endblock %}
