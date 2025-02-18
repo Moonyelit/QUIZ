@@ -4,24 +4,40 @@ namespace App\Controller;
 
 use App\Entity\Quiz;
 use App\Entity\Score;
+use App\Service\SlugGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ChoiceQuizController extends AbstractController
 {
+    private SlugGenerator $slugGenerator;
+
+    public function __construct(SlugGenerator $slugGenerator)
+    {
+        $this->slugGenerator = $slugGenerator;
+    }
+
     #[Route('/choiceQuiz', name: 'choice_quiz')]
     public function choiceQuiz(Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
         $quizzes = $entityManager->getRepository(Quiz::class)->findAll();
         $player = $security->getUser();
 
-        $quizzesWithScores = [];
+        $quizzesWithScores = []; // Initialisation correcte du tableau
 
         foreach ($quizzes as $quiz) {
+            // Générer et définir le slug si non défini
+            if (!$quiz->getSlug()) {
+                $slug = $this->slugGenerator->generate($quiz->getName());
+                $quiz->setSlug($slug);
+                $entityManager->persist($quiz);
+                $entityManager->flush();
+            }
+
             // Récupérer les scores pour le quiz en question
             $scores = $entityManager->getRepository(Score::class)->findBy(['quiz' => $quiz]);
 
@@ -36,6 +52,7 @@ class ChoiceQuizController extends AbstractController
             $quizzesWithScores[] = [
                 'quiz' => $quiz,
                 'topScores' => $topScores,
+                'link' => $this->generateUrl('app_question', ['slug' => $quiz->getSlug()]), // Utilisation du slug
             ];
         }
 
