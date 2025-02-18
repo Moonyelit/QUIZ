@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use App\Entity\Player;
@@ -7,17 +6,20 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class SecurityController extends AbstractController
 {
     #[Route(path: '/', name: 'app_login')]
-    public function login(Request $request, AuthenticationUtils $authenticationUtils, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    public function login(Request $request, AuthenticationUtils $authenticationUtils, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        // get the login error if there is one
+        if ($this->getUser()) {
+            return $this->redirectToRoute('choice_quiz');
+        }
+
         $error = $authenticationUtils->getLastAuthenticationError();
 
         // last username entered by the user
@@ -32,7 +34,7 @@ class SecurityController extends AbstractController
             if ($player) {
                 if ($passwordHasher->isPasswordValid($player, $password)) {
                     // Log in the user
-                    return $this->redirectToRoute('home');
+                    return $this->redirectToRoute('choice_quiz');
                 } else {
                     $this->addFlash('error', 'Invalid credentials.');
                 }
@@ -45,8 +47,9 @@ class SecurityController extends AbstractController
                 $entityManager->persist($player);
                 $entityManager->flush();
 
-                $this->addFlash('success', 'Account created successfully.');
-                return $this->redirectToRoute('home');
+                $this->addFlash('success', 'Vous êtes connecté avec succès.');
+
+                return $this->redirectToRoute('choice_quiz');
             }
         }
 
