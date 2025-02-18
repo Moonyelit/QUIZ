@@ -1,48 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}QUIZ || QUESTION {% endblock %}
+{% block title %}QUIZ || QUESTION
+{% endblock %}
 
 
 {% block body %}
 
-  
 
-         {% block main %}
+	{% block main %}
+		<div class="fixed inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-full w-full"></div>
 
-         <!-- Ajout d'une div avec une couleur de fond et une opacité de 50% -->
-        <div class="fixed inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-full w-full"></div>
-
-        <!-- Section principale -->
-        <section class="relative h-full max-w-full my-[39px] mx-[30px] p-2 bg-gradient-clair-orange }}
-                    border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary 
-                    rounded-[42px] overflow-hidden">
-
-                    
-  {% block header %}
-        {% include "header/headerQuestion.html.twig" %}
-    {% endblock %}
-
-        <?php
-        // Génère les questions pour le quiz spécifié
-        if (isset($_SESSION['idQuiz'])) {
-            echo $qcmManager->generateQuestions($_SESSION['idQuiz']);
-        } else {
-            echo '<p class="text-red-500">Aucun quiz sélectionné.</p>';
-        }
-        ?>
+		<!-- Section principale -->
+		<section class="relative h-full max-w-full my-[39px] mx-[30px] p-2 bg-gradient-clair-orange }}
+												                    border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary
+												                    rounded-[42px] overflow-hidden">
 
 
-       
-
-         {% endblock %}
-
-
-
-    {% block footer %}
-        {% include "footer/footerHome.html.twig" %}
-    {% endblock %}
-    
-     </section>
+			{% block header %}
+				{% include "header/headerQuestion.html.twig" %}
+			{% endblock %}
 
 
-{% endblock %}
+			<div id="question-container">
+				<h2>{{ question.getQuestion}}</h2>
+				<form id="question-form">
+					{% for answer in question.answers %}
+						<div>
+							<input type="radio" name="answer" value="{{ answer.id }}" id="answer-{{ answer.id }}">
+							<label for="answer-{{ answer.id }}">{{ answer.getAnswer }}</label>
+						</div>
+					{% endfor %}
+
+					<button type="submit">Valider</button>
+				{% endblock %}
+
+
+				{% block footer %}
+					{% include "footer/footerHome.html.twig" %}
+				{% endblock %}
+
+				{% block javascriptsQUIZ %}
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+                                const form = document.getElementById('question-form');
+                                form.addEventListener('submit', function (event) {
+                                event.preventDefault();
+                                const formData = new FormData(form);
+                                const index = parseInt(formData.get('index')) + 1;
+                                fetch (`/question/{{ quiz.Slug }}/next?index=${index}`, {method: 'GET'}).then(response => response.text()).then(html => {
+                                document.getElementById('quiz-container').innerHTML = html;
+                                });
+                                });
+                                });
+					</script>
+				{% endblock %}
+
+
+			</section>
+
+
+		{% endblock %}
