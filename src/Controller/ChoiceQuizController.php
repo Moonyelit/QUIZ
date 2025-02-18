@@ -52,7 +52,7 @@ class ChoiceQuizController extends AbstractController
             $quizzesWithScores[] = [
                 'quiz' => $quiz,
                 'topScores' => $topScores,
-                'link' => $this->generateUrl('app_question', ['slug' => $quiz->getSlug()]), // Utilisation du slug
+                'link' => $this->generateUrl('app_question', ['Slug' => $quiz->getSlug()]), // Utilisation du slug
             ];
         }
 
@@ -62,4 +62,9 @@ class ChoiceQuizController extends AbstractController
             'quizzesWithScores' => $quizzesWithScores,
         ]);
     }
+
+
+
+
+
 }

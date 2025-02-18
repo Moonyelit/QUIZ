@@ -30,8 +30,8 @@ class Quiz
     #[ORM\OneToMany(targetEntity: Question::class, mappedBy: 'quiz')]
     private Collection $questions;
 
-    #[ORM\Column(type: 'string', length: 255, unique: true)]
-    private ?string $slug = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Slug = null;
 
     public function __construct()
     {
@@ -118,12 +118,12 @@ class Quiz
 
     public function getSlug(): ?string
     {
-        return $this->slug;
+        return $this->Slug;
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(?string $Slug): static
     {
-        $this->slug = $slug;
+        $this->Slug = $Slug;
 
         return $this;
     }
