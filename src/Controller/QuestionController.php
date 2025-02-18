@@ -12,13 +12,20 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class QuestionController extends AbstractController
 {
-    #[Route('/question', name: 'question')]
-    public function questionQuiz(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/quiz/{id}/questions', name: 'app_question')]
+    public function questionQuiz(int $id, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $quizzes = $entityManager->getRepository(Quiz::class)->findAll();
+        $quizzes = $entityManager->getRepository(Quiz::class)->find($id);
 
+        if (!$quizzes) {
+            throw $this->createNotFoundException('Quiz not found');
+        }
+
+    $questions = $entityManager->getRepository(Question::class)->findBy(['quiz' => $quizzes]);
+        
         return $this->render('questionQuiz.html.twig', [
             'quizzes' => $quizzes,
+            'questions' => $questions,
         ]);
     }
 }
