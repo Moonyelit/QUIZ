@@ -45,26 +45,21 @@
 {% block javascriptsQUIZ %}
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
-		// Fonction pour attacher les événements
 		function initQuiz() {
-			console.log("initQuiz() exécuté");
-
 			const form = document.getElementById('question-form');
 			if (!form) return;
 
 			const answerContainers = document.querySelectorAll('.answer-container');
 
-			// Sélection des réponses
 			answerContainers.forEach(container => {
 				container.addEventListener('click', function () {
-					// Enlever la sélection des autres
+
 					answerContainers.forEach(c => c.classList.remove('selected'));
 					container.classList.add('selected');
 					container.querySelector('input[type="radio"]').checked = true;
 				});
 			});
 
-			// Gestion de la soumission du formulaire
 			form.addEventListener('submit', function (event) {
 				event.preventDefault();
 				const formData = new FormData(form);
@@ -84,23 +79,22 @@
 				})
 				.then(response => response.json())
 				.then(data => {
-					// Ajout des classes "true" ou "false"
 					const selectedContainer = document.querySelector(`.answer-container[data-answer-id="${answerId}"]`);
 					if (selectedContainer) {
 						selectedContainer.classList.add(data.correct ? 'true' : 'false');
 					}
 
-					// Passage à la question suivante après 1 seconde
 					setTimeout(() => {
 						if (index < {{ totalQuestions }}) {
 							fetch(`/question/{{ quiz.Slug }}/next?index=${index}`, { method: 'GET' })
 							.then(response => response.text())
 							.then(html => {
 								document.getElementById('quiz-container').innerHTML = html;
-								initQuiz(); // Réattacher les événements après chargement AJAX
+								initQuiz();
 							});
 						} else {
-							window.location.href = '/results';
+							const playerScore = calculatePlayerScore(); // Assurez-vous de définir cette fonction pour calculer le score du joueur
+							window.location.href = `/question/{{ quiz.Slug }}/finish?score=${playerScore}`;
 						}
 					}, 1000);
 				});

@@ -13,21 +13,20 @@ use Symfony\Component\Routing\Attribute\Route;
 class ResultController extends AbstractController
 {
     #[Route('/results', name: 'results')]
-    public function resultsQuiz (Request $request, EntityManagerInterface $entityManager, Security $security): Response
+    public function resultsQuiz(Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
-
         $session = $request->getSession();
         $quizId = $session->get('quiz_id');
         $playerScore = $session->get('player_score');
         $player = $security->getUser();
 
         if (!$quizId) {
-            throw $this->createNotFoundException('Quiz non trouvé');
+            throw $this->createNotFoundException('Quiz non trouvé (quiz_id manquant)');
         }
 
         $quiz = $entityManager->getRepository(Quiz::class)->find($quizId);
         if (!$quiz) {
-            throw $this->createNotFoundException('Quiz non trouvé');
+            throw $this->createNotFoundException('Quiz non trouvé (quiz introuvable dans la base de données)');
         }
 
         $scores = $entityManager->getRepository(Quiz::class)->findBy(['quiz' => $quizId]);

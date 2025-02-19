@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 18 fév. 2025 à 15:59
+-- Généré le : mer. 19 fév. 2025 à 15:52
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -35,53 +35,101 @@ CREATE TABLE IF NOT EXISTS `answer` (
   `is_right` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_DADD4A251E27F6BF` (`question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `answer`
 --
 
 INSERT INTO `answer` (`id`, `question_id`, `answer`, `is_right`) VALUES
-(81, 1, 'Pong', 1),
-(82, 1, 'Pac-Man', 0),
-(83, 1, 'Tetris', 0),
-(84, 1, 'Space Invaders', 0),
-(85, 2, 'Zelda', 0),
-(86, 2, 'Ganondorf', 0),
-(87, 2, 'Link', 1),
-(88, 2, 'Epona', 0),
-(89, 3, 'Bethesda', 0),
-(90, 3, 'CD Projekt Red', 1),
-(91, 3, 'Ubisoft', 0),
-(92, 3, 'Square Enix', 0),
-(93, 4, 'Half-Life', 0),
-(94, 4, 'Portal', 1),
-(95, 4, 'Doom', 0),
-(96, 4, 'BioShock', 0),
-(97, 5, 'Master Chief', 1),
-(98, 5, 'Solid Snake', 0),
-(99, 5, 'Doomguy', 0),
-(100, 5, 'Samus Aran', 0),
-(101, 6, 'Fortnite', 0),
-(102, 6, 'PUBG', 1),
-(103, 6, 'Apex Legends', 0),
-(104, 6, 'Call of Duty Warzone', 0),
-(105, 7, 'Pikachu', 0),
-(106, 7, 'Salamèche', 0),
-(107, 7, 'Bulbizarre', 1),
-(108, 7, 'Carapuce', 0),
-(109, 8, 'Bowser', 1),
-(110, 8, 'Wario', 0),
-(111, 8, 'Donkey Kong', 0),
-(112, 8, 'Koopa', 0),
-(113, 9, 'Skyrim', 0),
-(114, 9, 'Bloodborne', 0),
-(115, 9, 'The Witcher', 1),
-(116, 9, 'Elden Ring', 0),
-(117, 10, 'Nintendo', 0),
-(118, 10, 'Microsoft', 0),
-(119, 10, 'Sony', 1),
-(120, 10, 'Sega', 0);
+(1, 1, 'Pong', 1),
+(2, 1, 'Pac-Man', 0),
+(3, 1, 'Tetris', 0),
+(4, 1, 'Space Invaders', 0),
+(5, 2, 'Zelda', 0),
+(6, 2, 'Ganondorf', 0),
+(7, 2, 'Link', 1),
+(8, 2, 'Epona', 0),
+(9, 3, 'Bethesda', 0),
+(10, 3, 'CD Projekt Red', 1),
+(11, 3, 'Ubisoft', 0),
+(12, 3, 'Square Enix', 0),
+(13, 4, 'Half-Life', 0),
+(14, 4, 'Portal', 1),
+(15, 4, 'Doom', 0),
+(16, 4, 'BioShock', 0),
+(17, 5, 'Master Chief', 1),
+(18, 5, 'Solid Snake', 0),
+(19, 5, 'Doomguy', 0),
+(20, 5, 'Samus Aran', 0),
+(21, 6, 'Fortnite', 0),
+(22, 6, 'PUBG', 1),
+(23, 6, 'Apex Legends', 0),
+(24, 6, 'Call of Duty Warzone', 0),
+(25, 7, 'Pikachu', 0),
+(26, 7, 'Salamèche', 0),
+(27, 7, 'Bulbizarre', 1),
+(28, 7, 'Carapuce', 0),
+(29, 8, 'Bowser', 1),
+(30, 8, 'Wario', 0),
+(31, 8, 'Donkey Kong', 0),
+(32, 8, 'Koopa', 0),
+(33, 9, 'Skyrim', 0),
+(34, 9, 'Bloodborne', 0),
+(35, 9, 'The Witcher', 1),
+(36, 9, 'Elden Ring', 0),
+(37, 10, 'Nintendo', 0),
+(38, 10, 'Microsoft', 0),
+(39, 10, 'Sony', 1),
+(40, 10, 'Sega', 0),
+(41, 11, '5', 0),
+(42, 11, '6', 0),
+(43, 11, '7', 1),
+(44, 11, '8', 0),
+(45, 12, 'Hydrogène', 0),
+(46, 12, 'Carbone', 0),
+(47, 12, 'Oxygène', 1),
+(48, 12, 'Azote', 0),
+(49, 13, 'Toronto', 0),
+(50, 13, 'Ottawa', 1),
+(51, 13, 'Vancouver', 0),
+(52, 13, 'Montréal', 0),
+(53, 14, 'Michel-Ange', 0),
+(54, 14, 'Leonard de Vinci', 1),
+(55, 14, 'Raphaël', 0),
+(56, 14, 'Rembrandt', 0),
+(57, 15, '7', 1),
+(58, 15, '8', 0),
+(59, 15, '9', 0),
+(60, 15, '10', 0),
+(61, 16, 'Français', 0),
+(62, 16, 'Anglais', 0),
+(63, 16, 'Chinois', 1),
+(64, 16, 'Espagnol', 0),
+(65, 21, 'Louis XIV', 0),
+(66, 21, 'Napoléon Bonaparte', 1),
+(67, 21, 'Charlemagne', 0),
+(68, 21, 'François Ier', 0),
+(69, 22, '1912', 0),
+(70, 22, '1914', 1),
+(71, 22, '1918', 0),
+(72, 22, '1920', 0),
+(73, 23, 'Rome', 0),
+(74, 23, 'Pompei', 1),
+(75, 23, 'Athènes', 0),
+(76, 23, 'Carthage', 0),
+(77, 24, 'Marco Polo', 0),
+(78, 24, 'Christophe Colomb', 1),
+(79, 24, 'Magellan', 0),
+(80, 24, 'Vasco de Gama', 0),
+(81, 25, 'Liberté, Egalité, Fraternité', 1),
+(82, 25, 'Vive la France', 0),
+(83, 25, 'Paix, Travail, Patrie', 0),
+(84, 25, 'Un pour tous, tous pour un', 0),
+(85, 26, 'George Washington', 0),
+(86, 26, 'Abraham Lincoln', 1),
+(87, 26, 'Franklin Roosevelt', 0),
+(88, 26, 'Thomas Jefferson', 0);
 
 -- --------------------------------------------------------
 
@@ -102,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20250210220604', '2025-02-18 08:49:51', 538);
+('DoctrineMigrations\\Version20250219084922', '2025-02-19 08:51:34', 2814);
 
 -- --------------------------------------------------------
 
@@ -139,15 +187,14 @@ CREATE TABLE IF NOT EXISTS `player` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_IDENTIFIER_USERNAME` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `player`
 --
 
 INSERT INTO `player` (`id`, `username`, `roles`, `password`) VALUES
-(1, 'Test', '[]', '$2y$13$npawHUA71gwpZTzKFUxU6OvfHm6kWUFN3TguMuRCoEj9ZCkUzQmz6'),
-(2, 'Test2', '[]', '$2y$13$s7nmVEPVJtbzhz9gb8TCfeTRzavF.eEWcuU.8QOYEPxrn2ZPc3LPa');
+(1, 'Test', '[]', '$2y$13$tqsMme.YtHAEpqvLfZstReMhErD/fnUtq55l3oopw8E2cQ7V4ubJK');
 
 -- --------------------------------------------------------
 
@@ -210,6 +257,7 @@ DROP TABLE IF EXISTS `quiz`;
 CREATE TABLE IF NOT EXISTS `quiz` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -217,10 +265,10 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 -- Déchargement des données de la table `quiz`
 --
 
-INSERT INTO `quiz` (`id`, `name`) VALUES
-(1, 'Jeux vidéo'),
-(2, 'Culture général'),
-(3, 'Histoire');
+INSERT INTO `quiz` (`id`, `name`, `slug`) VALUES
+(1, 'Jeux Vidéo', 'jeux-video'),
+(2, 'Culture Général', 'culture-generale'),
+(3, 'Histoire', 'histoire');
 
 -- --------------------------------------------------------
 
