@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Quiz;
+use App\Entity\Score;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -29,7 +30,7 @@ class ResultController extends AbstractController
             throw $this->createNotFoundException('Quiz non trouvé (quiz introuvable dans la base de données)');
         }
 
-        $scores = $entityManager->getRepository(Quiz::class)->findBy(['quiz' => $quizId]);
+        $scores = $entityManager->getRepository(Score::class)->findBy(['quiz' => $quiz]);
 
         usort($scores, function($a, $b) {
             return $b->getScore() - $a->getScore();

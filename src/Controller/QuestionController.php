@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionController extends AbstractController
 {
     #[Route('/question/{Slug}', name: 'app_question')]
-    public function questionQuiz(string $Slug, Request $request, EntityManagerInterface $entityManager): Response
+    public function questionQuiz(string $Slug, EntityManagerInterface $entityManager): Response
     {
         $quiz = $entityManager->getRepository(Quiz::class)->findOneBy(['Slug' => $Slug]);
 
@@ -21,7 +21,7 @@ class QuestionController extends AbstractController
             throw $this->createNotFoundException('Quiz non trouvé');
         }
 
-        $questions = $entityManager->getRepository(Question::class)->findBy(['quiz' => $quiz]);
+        $questions = $entityManager->getRepository(Question::class)->findBy(['Slug' => $Slug]);
         $questionIndex = 0;
         $question = $questions[$questionIndex] ?? null;
 
