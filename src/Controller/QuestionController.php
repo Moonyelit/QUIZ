@@ -81,4 +81,22 @@ class QuestionController extends AbstractController
 
         return $this->json(['correct' => $isCorrect]);
     }
+
+
+    #[Route('/question/{Slug}/finish', name: 'app_question_finish')]
+    public function finishQuiz(string $Slug, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $quiz = $entityManager->getRepository(Quiz::class)->findOneBy(['Slug' => $Slug]);
+
+        if (!$quiz) {
+            throw $this->createNotFoundException('Quiz non trouvé');
+        }
+
+        $playerScore = $request->query->get('score', 0);
+        $session = $request->getSession();
+        $session->set('quiz_id', $quiz->getId());
+        $session->set('player_score', $playerScore);
+
+        return $this->redirectToRoute('results');
+    }
 }
