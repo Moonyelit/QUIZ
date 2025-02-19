@@ -21,7 +21,7 @@ class QuestionController extends AbstractController
             throw $this->createNotFoundException('Quiz non trouvé');
         }
 
-        $questions = $entityManager->getRepository(Question::class)->findBy(['Slug' => $Slug]);
+        $questions = $entityManager->getRepository(Question::class)->findBy(['quiz' => $quiz]);
         $questionIndex = 0;
         $question = $questions[$questionIndex] ?? null;
 
@@ -81,7 +81,6 @@ class QuestionController extends AbstractController
 
         return $this->json(['correct' => $isCorrect]);
     }
-
 
     #[Route('/question/{Slug}/finish', name: 'app_question_finish')]
     public function finishQuiz(string $Slug, Request $request, EntityManagerInterface $entityManager): Response
