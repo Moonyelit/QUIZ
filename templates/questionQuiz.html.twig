@@ -42,55 +42,76 @@
 
 			{% endblock %}
 
-			{% block javascriptsQUIZ %}
-				<script>
-					document.addEventListener('DOMContentLoaded', function () {
-const form = document.getElementById('question-form');
-const answerContainers = document.querySelectorAll('.answer-container');
+{% block javascriptsQUIZ %}
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		// Fonction pour attacher les événements
+		function initQuiz() {
+			console.log("initQuiz() exécuté");
 
-answerContainers.forEach(container => {
-container.addEventListener('click', function () {
-answerContainers.forEach(c => c.classList.remove('selected'));
-container.classList.add('selected');
-container.querySelector('input[type="radio"]').checked = true;
-});
-});
+			const form = document.getElementById('question-form');
+			if (!form) return;
 
-form.addEventListener('submit', function (event) {
-event.preventDefault();
-const formData = new FormData(form);
-const questionId = formData.get('question_id');
-const answerId = formData.get('answer');
-const index = parseInt(formData.get('index')) + 1;
+			const answerContainers = document.querySelectorAll('.answer-container');
 
-fetch(`/question/{{ quiz.Slug }}/check`, {
-method: 'POST',
-body: JSON.stringify(
-{question_id: questionId, answer_id: answerId}
-),
-headers: {
-'Content-Type': 'application/json'
-}
-}).then(response => response.json()).then(data => {
-if (data.correct) {
-document.querySelector (`.answer-container[data-answer-id="${answerId}"]`).classList.add('true');
-} else {
-document.querySelector (`.answer-container[data-answer-id="${answerId}"]`).classList.add('false');
-}
+			// Sélection des réponses
+			answerContainers.forEach(container => {
+				container.addEventListener('click', function () {
+					// Enlever la sélection des autres
+					answerContainers.forEach(c => c.classList.remove('selected'));
+					container.classList.add('selected');
+					container.querySelector('input[type="radio"]').checked = true;
+				});
+			});
 
-setTimeout(() => {
-if (index < {{ totalQuestions }}) {
-fetch (`/question/{{ quiz.Slug }}/next?index=${index}`, {method: 'GET'}).then(response => response.text()).then(html => {
-document.getElementById('quiz-container').innerHTML = html;
-});
-} else {
-window.location.href = '/results';
-}
-}, 1000); 
-});
-});
-				</script>
-			{% endblock %}
+			// Gestion de la soumission du formulaire
+			form.addEventListener('submit', function (event) {
+				event.preventDefault();
+				const formData = new FormData(form);
+				const questionId = formData.get('question_id');
+				const answerId = formData.get('answer');
+				const index = parseInt(formData.get('index')) + 1;
+
+				if (!answerId) {
+					alert("Veuillez sélectionner une réponse !");
+					return;
+				}
+
+				fetch(`/question/{{ quiz.Slug }}/check`, {
+					method: 'POST',
+					body: JSON.stringify({ question_id: questionId, answer_id: answerId }),
+					headers: { 'Content-Type': 'application/json' }
+				})
+				.then(response => response.json())
+				.then(data => {
+					// Ajout des classes "true" ou "false"
+					const selectedContainer = document.querySelector(`.answer-container[data-answer-id="${answerId}"]`);
+					if (selectedContainer) {
+						selectedContainer.classList.add(data.correct ? 'true' : 'false');
+					}
+
+					// Passage à la question suivante après 1 seconde
+					setTimeout(() => {
+						if (index < {{ totalQuestions }}) {
+							fetch(`/question/{{ quiz.Slug }}/next?index=${index}`, { method: 'GET' })
+							.then(response => response.text())
+							.then(html => {
+								document.getElementById('quiz-container').innerHTML = html;
+								initQuiz(); // Réattacher les événements après chargement AJAX
+							});
+						} else {
+							window.location.href = '/results';
+						}
+					}, 1000);
+				});
+			});
+		}
+
+		initQuiz();
+	});
+</script>
+{% endblock %}
+
 		</section>
 
 	</div>
