@@ -36,9 +36,11 @@ class SecurityController extends AbstractController
                     // Log in the user
                     return $this->redirectToRoute('choice_quiz');
                 } else {
-                    $this->addFlash('error', 'Invalid credentials.');
+                    $this->addFlash('error', 'Identifiants Invalides.');
                 }
             } else {
+                $this->addFlash('error', 'Le pseudo n\'existe pas.');
+
                 // Create a new player
                 $player = new Player();
                 $player->setUsername($username);

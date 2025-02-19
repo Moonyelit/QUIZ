@@ -90,4 +90,15 @@ class Question
 
         return $this;
     }
+
+    public function getCorrectAnswer(): ?Answer
+    {
+        foreach ($this->answers as $answer) {
+            if ($answer->isRight()) {
+                return $answer;
+            }
+        }
+
+        return null;
+    }
 }
