@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Quiz;
 use App\Entity\Question;
+use App\Entity\Score;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -83,7 +85,7 @@ class QuestionController extends AbstractController
     }
 
     #[Route('/question/{Slug}/finish', name: 'app_question_finish')]
-    public function finishQuiz(string $Slug, Request $request, EntityManagerInterface $entityManager): Response
+    public function finishQuiz(string $Slug, Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
         $quiz = $entityManager->getRepository(Quiz::class)->findOneBy(['Slug' => $Slug]);
 
@@ -91,10 +93,22 @@ class QuestionController extends AbstractController
             throw $this->createNotFoundException('Quiz non trouvé');
         }
 
-        $playerScore = $request->query->get('score', 0);
+
+
+        $playerScore = (int) $request->query->get('score', 0);
         $session = $request->getSession();
         $session->set('quiz_id', $quiz->getId());
         $session->set('player_score', $playerScore);
+
+
+        $score = new Score();
+        $score->setQuiz($quiz);
+        $score->setPlayer($security->getUser());
+        $score->setScore($playerScore);
+
+        $entityManager->persist($score);
+        $entityManager->flush();
+
 
         return $this->redirectToRoute('results');
     }

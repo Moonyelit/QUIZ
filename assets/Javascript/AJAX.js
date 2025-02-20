@@ -55,28 +55,27 @@ document.addEventListener("submit", function (event) {
         selectedContainer.classList.add(data.correct ? "true" : "false");
       }
 
-
       setTimeout(() => {
         if (index < totalQuestions) {
             fetch(`/question/${quizSlug}/next?index=${index}`, { method: 'GET' })
             .then(response => response.text())
             .then(html => {
                 document.getElementById('quiz-container').innerHTML = html;
-    
+
                 // Supprime toutes les animations qui pourraient modifier la position
                 document.querySelectorAll('.animate-slide-down, .animate-slide-up').forEach(el => {
                     el.classList.remove('animate-slide-down', 'animate-slide-up');
                 });
-    
+
                 // Forcer la position après suppression des classes
                 document.querySelector('section').scrollIntoView({ behavior: "instant", block: "start" });
             });
         } else {
             console.log("Fin du quiz, redirection vers résultats...");
-            window.location.href = `/question/${quizSlug}/finish`; 
+            const playerScore = formData.get('player_score'); // Assurez-vous que le score du joueur est récupéré correctement
+            window.location.href = `/question/${quizSlug}/finish?score=${playerScore}`; 
         }
-    }, 1000);
-    
+      }, 1000);
     
     })
     
