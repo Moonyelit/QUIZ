@@ -17,7 +17,8 @@
   }
   
   html, body {
-      overflow-x: hidden; /* Empêche le défilement horizontal sur toute la page */
+      overflow : hidden; 
+      scroll-behavior: auto !important;
       width: 100%;
   }
 
@@ -48,3 +49,10 @@ body::before {
   font-style: normal;
 }
 
+
+
+#quiz-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start !important;
+}
