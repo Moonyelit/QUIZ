@@ -37,10 +37,10 @@
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				<label for="pseudo" class="font-changa text-3xl lg:text-5xl">Votre pseudo</label>
-				<input type="text" id="pseudo" name="_username" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre pseudo ici" required>
+				<input type="text" id="pseudo" name="_username" maxlength="20" pattern="[A-Za-z0-9]{3,20}" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre pseudo ici" required>
 
 				<label for="password" class="font-changa lg:text-5xl" style="font-size: 1.75rem">Votre mot de passe</label>
-				<input type="password" id="password" name="_password" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre mot de passe ici" required>
+				<input type="password" id="password" name="_password" maxlength="50" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre mot de passe ici" required>
 
 				<button ref="{{ path('app_register') }}" type="submit" class="btn btn-custom">
 					Valider

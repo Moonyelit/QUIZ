@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/', name: 'app_login')]
-    public function login(Request $request, AuthenticationUtils $authenticationUtils, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, SessionInterface $session): Response
+    public function login(Request $request, AuthenticationUtils $authenticationUtils, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('choice_quiz');
@@ -22,42 +22,40 @@ class SecurityController extends AbstractController
 
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
+        // Gestion des erreurs d'authentification
+        if ($error) {
+            if ($error->getMessageKey() === 'Invalid credentials.') {
+                $this->addFlash('error', 'Identifiants incorrects.');
+            }
+        }
+
         $lastUsername = $authenticationUtils->getLastUsername();
 
         if ($request->isMethod('POST')) {
             $username = $request->request->get('_username');
             $password = $request->request->get('_password');
 
+            if (!preg_match('/^[A-Za-z0-9]{3,10}$/', $username)) {
+                $this->addFlash('error', 'Le pseudo doit contenir entre 3 et 10 caractères alphanumériques.');
+                return $this->redirectToRoute('app_login');
+            }
+
             $player = $entityManager->getRepository(Player::class)->findOneBy(['username' => $username]);
 
             if ($player) {
                 if ($passwordHasher->isPasswordValid($player, $password)) {
-                    // Log in the user
                     return $this->redirectToRoute('choice_quiz');
                 } else {
-                    $this->addFlash('error', 'Identifiants Invalides.');
+                    $this->addFlash('error', 'Mot de passe incorrect pour ce pseudo.');
                 }
             } else {
                 $this->addFlash('error', 'Le pseudo n\'existe pas.');
-
-                // Create a new player
-                $player = new Player();
-                $player->setUsername($username);
-                $player->setPassword($passwordHasher->hashPassword($player, $password));
-
-                $entityManager->persist($player);
-                $entityManager->flush();
-
-                $this->addFlash('success', 'Vous êtes connecté avec succès.');
-
-                return $this->redirectToRoute('choice_quiz');
             }
         }
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error,
+            'error' => null,
         ]);
     }
 

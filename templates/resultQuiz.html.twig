@@ -3,7 +3,7 @@
 {% block title %}QUIZ || RESULTATS{% endblock %}
 
 {% block javascripts %}
-<script src="{{ asset('assets/Javascript/animations.js') }}"></script>
+<script src="{{ asset('Javascript/animations.js') }}"></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -43,37 +43,38 @@
 
     <!-- PODIUM -->
     {% if topScores is not empty %}
-        <article class="flex flex-row mb-10 items-end justify-center">
-            {% for score in topScores %}
-                {% if loop.index == 2 %}
-                    <!-- DEUXIEME PLACE -->
-                    <div class="flex flex-col items-center podium-item">
-                        <img src="images/Phone - Quiz résultat/Podium/Silver-Medal.png" alt="Médaille d'argent" class="w-[3rem]">
-                        <div>
-                            <p class="text-black text-xl font-bold ">{{ score.player.username }}</p>
-                            <span class="text-graycustom text-[15px] font-semibold">{{ score.score }} points</span>
-                        </div>
-                        <img src="images/Phone - Quiz résultat/Podium/2.png" alt="Colone 2" class="bottom-0">
-                    </div>
-                {% elseif loop.index == 1 %}
-                    <!-- PREMIERE PLACE -->
-                    <div class="flex flex-col items-center podium-item">
-                        <img src="images/Phone - Quiz résultat/Podium/Gold-Medal.png" alt="Médaille d'or" class="w-[3rem]">
-                        <p class="text-black text-xl font-bold ">{{ score.player.username }}</p>
-                        <span class="text-graycustom text-[15px] font-semibold">{{ score.score }} points</span>
-                        <img src="images/Phone - Quiz résultat/Podium/1.png" alt="Colone 1" class="bottom-0">
-                    </div>
-                {% elseif loop.index == 3 %}
-                    <!-- TROISEME PLACE -->
-                    <div class="flex flex-col items-center podium-item">
-                        <img src="images/Phone - Quiz résultat/Podium/Bronze-Medal.png" alt="Médaille de Bronze" class="w-[3rem]">
-                        <p class="text-black text-xl font-bold ">{{ score.player.username }}</p>
-                        <span class="text-graycustom text-[15px] font-semibold">{{ score.score }} points</span>
-                        <img src="images/Phone - Quiz résultat/Podium/3.png" alt="Colone 3">
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </article>
+<article class="flex flex-row mb-10 items-end justify-center">
+    {% for score in topScores %}
+        {% if loop.index == 1 %}
+            <!-- PREMIÈRE PLACE : score le plus élevé, affiché au centre -->
+            <div class="flex flex-col items-center podium-item" style="order: 2;">
+                <img src="images/Phone - Quiz résultat/Podium/Gold-Medal.png" alt="Médaille d'or" class="w-[3rem]">
+                <p class="text-black text-xl font-bold ">{{ score.player.username }}</p>
+                <span class="text-graycustom text-[15px] font-semibold">{{ score.score }} points</span>
+                <img src="images/Phone - Quiz résultat/Podium/1.png" alt="Colone 1" class="bottom-0">
+            </div>
+        {% elseif loop.index == 2 %}
+            <!-- DEUXIÈME PLACE : score le deuxième, affiché à gauche -->
+            <div class="flex flex-col items-center podium-item" style="order: 1;">
+                <img src="images/Phone - Quiz résultat/Podium/Silver-Medal.png" alt="Médaille d'argent" class="w-[3rem]">
+                <div>
+                    <p class="text-black text-xl font-bold ">{{ score.player.username }}</p>
+                    <span class="text-graycustom text-[15px] font-semibold">{{ score.score }} points</span>
+                </div>
+                <img src="images/Phone - Quiz résultat/Podium/2.png" alt="Colone 2" class="bottom-0">
+            </div>
+        {% elseif loop.index == 3 %}
+            <!-- TROISIÈME PLACE : score le troisième, affiché à droite -->
+            <div class="flex flex-col items-center podium-item" style="order: 3;">
+                <img src="images/Phone - Quiz résultat/Podium/Bronze-Medal.png" alt="Médaille de Bronze" class="w-[3rem]">
+                <p class="text-black text-xl font-bold ">{{ score.player.username }}</p>
+                <span class="text-graycustom text-[15px] font-semibold">{{ score.score }} points</span>
+                <img src="images/Phone - Quiz résultat/Podium/3.png" alt="Colone 3">
+            </div>
+        {% endif %}
+    {% endfor %}
+</article>
+
     {% endif %}
 
     <article>
@@ -96,4 +97,12 @@
         {% include "footer/footerResult.html.twig" %}
     {% endblock %}
 </section>
+
+
+
+	{% block javascriptsQUIZ %}
+
+            
+    {% endblock %}
+
 {% endblock %}

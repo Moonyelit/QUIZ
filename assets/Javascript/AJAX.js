@@ -20,12 +20,12 @@ document.addEventListener("click", function (event) {
   if (radio) radio.checked = true;
 });
 
-// Gestion du submit du formulaire
-document.addEventListener("submit", function (event) {
-  if (!event.target.matches("#question-form")) return; // Vérifie qu'on soumet le bon formulaire
-  event.preventDefault();
+// Déclare une variable globale pour le score
+let playerScore = 0;
 
-  console.log("Formulaire soumis via AJAX !");
+document.addEventListener("submit", function (event) {
+  if (!event.target.matches("#question-form")) return;
+  event.preventDefault();
 
   const form = event.target;
   const formData = new FormData(form);
@@ -38,7 +38,6 @@ document.addEventListener("submit", function (event) {
     return;
   }
 
-  // Forcer AJAX dès la première soumission
   fetch(`/question/${quizSlug}/check`, {
     method: "POST",
     body: JSON.stringify({ question_id: questionId, answer_id: answerId }),
@@ -46,13 +45,18 @@ document.addEventListener("submit", function (event) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Réponse reçue :", data);
-
+      // Ajoute une classe pour marquer la bonne/mauvaise réponse
       const selectedContainer = document.querySelector(
         `.answer-container[data-answer-id="${answerId}"]`
       );
       if (selectedContainer) {
         selectedContainer.classList.add(data.correct ? "true" : "false");
+      }
+
+      // Si la réponse est correcte, incrémente le score et met à jour l'affichage
+      if (data.correct) {
+        playerScore += 10;
+        document.getElementById("score").textContent = `Votre score : ${playerScore} pts`;
       }
 
       setTimeout(() => {
@@ -61,30 +65,22 @@ document.addEventListener("submit", function (event) {
             .then(response => response.text())
             .then(html => {
                 document.getElementById('quiz-container').innerHTML = html;
-
-                // Supprime toutes les animations qui pourraient modifier la position
+      
+                // Réafficher le score avec la variable globale
+                document.getElementById('score').textContent = `Votre score : ${playerScore} pts`;
+      
+                // Supprime les classes d'animation éventuelles
                 document.querySelectorAll('.animate-slide-down, .animate-slide-up').forEach(el => {
                     el.classList.remove('animate-slide-down', 'animate-slide-up');
                 });
-
-                // Forcer la position après suppression des classes
                 document.querySelector('section').scrollIntoView({ behavior: "instant", block: "start" });
             });
         } else {
             console.log("Fin du quiz, redirection vers résultats...");
-            const playerScore = formData.get('player_score'); // Assurez-vous que le score du joueur est récupéré correctement
             window.location.href = `/question/${quizSlug}/finish?score=${playerScore}`; 
         }
       }, 1000);
-    
+      
     })
-    
     .catch((error) => console.error("Erreur AJAX :", error));
 });
-
-// Écouteur DOM
-if (window.Turbo) {
-  document.addEventListener("turbo:load", initQuiz);
-} else {
-  document.addEventListener("DOMContentLoaded", initQuiz);
-}
