@@ -1,58 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}QUIZ || QUESTION
+{% block title %}QUIZ || QUESTION{% endblock %}
+
+{% block stylesheets %}
+<style>
+    /* Barre de progression personnalisée */
+    #progress-container {
+        width: 100%;
+        height: 20px;
+        background-color: white; /* Fond immuable */
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+    #progress-bar {
+        background-color: #541A25;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0; /* La barre démarre à droite */
+        transition: width 1s linear;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
-	<div id="quiz-container">
+<div id="quiz-container">
+    <div class="fixed inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-full w-full"></div>
+    <!-- Section principale -->
+    <section class="relative h-full max-w-full my-[39px] mx-[30px] p-2 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px] overflow-hidden">
+    
+        {% block main %}
+            {% block header %}
+                {% include "header/headerQuestion.html.twig" %}
+            {% endblock %}
 
-		<div class="fixed inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-full w-full"></div>
+            <form id="question-form">
+                <input type="hidden" name="question_id" value="{{ question.id }}">
+                <input type="hidden" name="index" value="{{ index }}">
+                <div class="answers-grid">
+                    {% for answer in question.answers %}
+                        <div class="answer-container" data-answer-id="{{ answer.id }}">
+                            <input type="radio" name="answer" value="{{ answer.id }}" id="answer-{{ answer.id }}" hidden>
+                            <label for="answer-{{ answer.id }}">{{ answer.getAnswer }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn-custom4 btn">Valider</button>
+            </form>
+        {% endblock %}
 
-		<!-- Section principale -->
-		<section class="relative h-full max-w-full my-[39px] mx-[30px] p-2 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px] overflow-hidden">
-		
-			{% block main %}
-			
+        {% block javascriptsQUIZ %}
+            <script>
+                var quizSlug = "{{ quiz.Slug }}";
+                var totalQuestions = {{ totalQuestions }};
+            </script>
+            <script src="{{ asset('Javascript/AJAX.js') }}"></script>
+            <script src="{{ asset('Javascript/timer.js') }}"></script>
+        {% endblock %}
 
-				{% block header %}
-					{% include "header/headerQuestion.html.twig" %}
-				{% endblock %}
-
-				<form id="question-form">
-					<input type="hidden" name="question_id" value="{{ question.id }}">
-					<input type="hidden" name="index" value="{{ index }}">
-
-					<div class="answers-grid">
-						{% for answer in question.answers %}
-							<div class="answer-container" data-answer-id="{{ answer.id }}">
-								<input type="radio" name="answer" value="{{ answer.id }}" id="answer-{{ answer.id }}" hidden>
-								<label for="answer-{{ answer.id }}">{{ answer.getAnswer }}</label>
-							</div>
-						{% endfor %}
-					</div>
-
-					<button type="submit" class="btn-custom4 btn">Valider</button>
-				</form>
-
-
-			{% endblock %}
-
-			{% block javascriptsQUIZ %}
-				<script>
-					var quizSlug = "{{ quiz.Slug }}";
-					var totalQuestions = {{ totalQuestions }};
-				</script>
-				<script src="{{ asset('Javascript/AJAX.js') }}"></script>
-			{% endblock %}
-
-
-			{% block footer %}
-					{% include "footer/footerQuestion.html.twig" %}
-			{% endblock %}
-
-
-
-		</section>
-		
-	</div>
+        {% block footer %}
+            {% include "footer/footerQuestion.html.twig" %}
+        {% endblock %}
+    </section>
+</div>
 {% endblock %}
