@@ -56,3 +56,22 @@ body::before {
   display: flex;
   align-items: flex-start !important;
 }
+
+
+
+.swiper-container {
+  overflow: hidden;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #541A25;
+}
+
+.swiper-pagination-bullet {
+  background: #541A25; 
+}
+
+.swiper-pagination-bullet-active {
+  background: #541A25;
+}
