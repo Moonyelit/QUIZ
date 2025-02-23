@@ -31,6 +31,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Changa+One:ital@0;1&family=Dosis:wght@200..800&display=swap" rel="stylesheet">
 
+
+    	<!-- Importation de Swiper CSS via CDN -->
 		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 
@@ -45,26 +47,17 @@
 	</head>
 
 
-	<body class="fond-quadrille animate-bg-scroll overflow-x-hidden">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<body class="fond-quadrille animate-bg-scroll overflow-x-hidden">
+		<!-- Importation de Swiper JS via CDN -->
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 		{% block body %}
-
 			{% block header %}{% endblock %}
 			{% block main %}{% endblock %}
 			{% block footer %}{% endblock %}
 			{% block javascriptsQUIZ %}{% endblock %}
-
 			{% block javascriptsCHOICE %}{% endblock %}
-
-
-
-
-
 		{% endblock %}
-
-
-
 	</body>
 
 </html>

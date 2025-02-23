@@ -2,28 +2,27 @@
 
 {% block title %}QUIZ || PAGE CHOIX QUIZ{% endblock %}
 
-
 {% block stylesheets %}
 <style>
-  /* Masquer tout débordement de slides */
+  /* Masquer les débordements du slider */
   .swiper-container {
     overflow: hidden !important;
   }
 
-.swiper-button-prev,
-.swiper-button-next {
-  color: #541A25 !important;
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  border-radius: 50% !important;
-  width: 60px !important;
-  height: 60px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
+  /* Personnalisation des flèches (boutons de navigation) */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #541A25 !important;
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50% !important;
+    width: 60px !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 
-
-  /* Couleur des bullets de pagination */
+  /* Personnalisation des bullets de pagination */
   .swiper-pagination-bullet {
     background: #541A25 !important;
   }
@@ -32,8 +31,6 @@
   }
 </style>
 {% endblock %}
-
-
 
 {% block body %}
 
@@ -120,7 +117,46 @@
     </section>
 
 {% block javascriptsCHOICE %}
-            <script src="{{ asset('Javascript/swiper.js') }}"></script>
+    <script>
+        function initSwiper() {
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    },
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 15
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    }
+                },
+                loop: false,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+
+        // Si tu utilises Turbo, écoute l'événement 'turbo:load'
+        document.addEventListener('turbo:load', initSwiper);
+        // Aussi l'événement 'load' pour un chargement complet
+        window.addEventListener('load', initSwiper);
+    </script>
 {% endblock %}
 
 
