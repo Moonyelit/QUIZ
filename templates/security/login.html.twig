@@ -3,9 +3,14 @@
 {% block title %}QUIZ || PAGE D'ACCUEIL
 {% endblock %}
 
+
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('styles/login.css') }}">
+		{% endblock %}
+
 {% block body %}
-	<section class="relative h-screen max-w-full lg:h-[calc(100vh-20px)] m-10 p-10 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px]
-															                                                                            lg:mx-[5%] lg:my-[2%] overflow-y-hidden box-border items-center">
+
+<section class="window-effect bg-gradient-clair-orange">
 
 		{% block header %}
 			{% include "header/headerHome.html.twig" %}
@@ -20,14 +25,14 @@
 				{% endfor %}
 			{% endfor %}
 
-			<form method="post" accept-char="UTF-8" role="form" data-parsley-validate autocomplete="off" class="flex flex-col justify-center items-center w-full lg:w-1/2 lg:mx-auto lg:my-auto lg:flex lg:flex-col lg:justify-center lg:items-center">
+			<form method="post" accept-charset="UTF-8" role="form" data-parsley-validate autocomplete="off" class="form-login">
 
 				{% if error %}
 					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 
 				{% if app.user %}
-					<div class="mb-3">
+					<div class="login-as">
 						You are logged in as
 						{{ app.user.userIdentifier }},
 						<a href="{{ path('app_logout') }}">Logout</a>
@@ -36,19 +41,23 @@
 
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-				<label for="pseudo" class="font-changa text-3xl lg:text-5xl">Votre pseudo</label>
-				<input type="text" id="pseudo" name="_username" maxlength="20" pattern="[A-Za-z0-9]{3,20}" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre pseudo ici" required>
+				<label for="pseudo" class="label-pseudo">Votre pseudo</label>
+				<input type="text" id="pseudo" name="_username" maxlength="20" pattern="[A-Za-z0-9]{3,20}" class="input-pseudo" placeholder="Votre pseudo ici" required>
 
-				<label for="password" class="font-changa lg:text-5xl" style="font-size: 1.75rem">Votre mot de passe</label>
-				<input type="password" id="password" name="_password" maxlength="50" class="border-[3px] border-black rounded-[17px] shadow-inner-lg bg-white w-[70%] lg:w-[50%] h-10 lg:h-14 pl-3" placeholder="Votre mot de passe ici" required>
 
-				<button ref="{{ path('app_register') }}" type="submit" class="btn btn-custom">
+
+				<label for="password" class="label-password">Votre mot de passe</label>
+				<input type="password" id="password" name="_password" maxlength="50" class="input-password" placeholder="Votre mot de passe ici" required>
+
+				<button ref="{{ path('app_register') }}" type="submit" class="btn btn-custom sumbit-login">
 					Valider
 				</button>
 			</form>
 
-			<p class="mb-3">Pas encore de compte ?</p>
-			<a href="{{ path('app_register') }}" class=" btn btn-custom w-[20%]">Inscription</a>
+			<div class="register-link">
+			<p>Pas encore de compte ?</p>
+			<a href="{{ path('app_register') }}" class="btn btn-custom">Inscription</a>
+			</div>
 		{% endblock %}
 
 		{% block footer %}

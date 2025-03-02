@@ -1,0 +1,286 @@
+/*SWIPER*/
+.swiper-container {
+  overflow: hidden ;
+}
+
+/* Personnalisation des flèches (boutons de navigation) */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #541A25 ;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 60px ;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Personnalisation des bullets de pagination */
+.swiper-pagination-bullet {
+  background: #541A25;
+  margin: 0 5px;
+}
+.swiper-pagination-bullet-active {
+  background: #541A25;
+}
+
+.pagination-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.swiper-pagination {
+  position: static !important; /* Override la position par défaut de Swiper */
+}
+
+/*HEADER*/
+/* ======= HEADER PRINCIPAL ======= */
+.header-quiz {
+  text-align: center;
+  position: relative;
+}
+
+/* ======= VERSION MOBILE ======= */
+.header-mobile {
+  position: relative;
+}
+
+.polygone-container-mobile {
+  position: relative;
+  height: 110px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.polygone-wrapper-mobile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Positionnement des polygones */
+.polygone1-mobile { position: absolute; top: 7px; left: 5%; }
+.polygone2-mobile { position: absolute; top: 7px; left: 27%; }
+.polygone3-mobile { position: absolute; top: 7px; left: 55%; }
+.polygone4-mobile { position: absolute; top: 7px; left: 92%; }
+.polygone5-mobile { position: absolute; top: 27%; left: 5%; }
+.polygone6-mobile { position: absolute; top: 45%; left: 27%; }
+.polygone7-mobile { position: absolute; top: 30%; left: 55%; }
+.polygone8-mobile { position: absolute; top: 47%; left: 35%; }
+.polygone9-mobile { position: absolute; top: 48%; left: 82%; }
+.polygone10-mobile { position: absolute; top: 78%; left: 82%; }
+
+@media (min-width: 768px) {
+  .polygone-container-mobile { height: 140px; }
+}
+@media (min-width: 1024px) {
+  .header-mobile { display: none; } /* Cache la version mobile sur desktop */
+}
+
+/* ======= VERSION ORDINATEUR ======= */
+.header-desktop {
+  display: none;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.header-left { top: 0; left: 0; }
+.header-right { top: 0; right: 0; }
+
+@media (min-width: 1024px) {
+  .header-desktop { display: block; }
+}
+
+/* Positionnement des polygones desktop */
+.polygone1-desktop { position: absolute; top: 5%; left: 5%; }
+.polygone2-desktop { position: absolute; top: 0%; left: 70%; }
+.polygone3-desktop { position: absolute; top: 25%; left: 5%; }
+.polygone4-desktop { position: absolute; top: 30%; left: 55%; }
+.polygone5-desktop { position: absolute; top: 65%; left: 43%; }
+.polygone22-desktop { position: absolute; top: 5%; left: 43%; }
+.polygone44-desktop { position: absolute; top: 45%; left: 33%; }
+
+/* ======= TITRES ======= */
+.quiz-welcome {
+  color: var(--dark-color);
+  font-size: 3vw;
+  margin-top: 2%;
+  margin-bottom: -1rem;
+}
+
+.quiz-title {
+  font-family: 'Changa', sans-serif;
+  font-size: 7vw;
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+}
+
+
+
+/***************************************************************************************************************
+***************************************************************************************************************
+MAIN****************************************************************************************************************/
+/* ======= SWIPER CONTAINER ======= */
+.swiper-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ======= CARTE DU QUIZ ======= */
+.quiz-card {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  background-color: rgba(110, 67, 60, 0.78);
+  border: 5px solid var(--primary-color);
+  border-radius: 1rem;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5vh 0;
+}
+
+/* ======= TITRE DU QUIZ ======= */
+.quiz-title-card {
+  color: white;
+  font-family: 'Changa', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ======= TRAIT DÉCORATIF ======= */
+.quiz-divider {
+  border-top: 8px solid white;
+  border-radius: 999px;
+  margin: 0 auto 20px;
+  width: 80%;
+}
+
+/* ======= SECTION SCORES ======= */
+.quiz-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* SCORE ENTRY (JOUEURS) */
+.score-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-bottom: 2px solid #6e433c;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.score-rank{
+  display: flex;
+  align-items: center;
+}
+
+.no-score {
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+}
+
+/* RANK NUMBER */
+.rank-number {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 4px solid #ccc;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  background: transparent;
+}
+
+/* INFO DU JOUEUR */
+.player-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.player-name {
+  font-weight: bold;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.player-score {
+  font-size: 1rem;
+  font-weight: 600;
+  color: gray;
+}
+
+/* MÉDAILLES */
+.medal {
+  display: flex;
+  align-items: center;
+}
+
+.medal-icon {
+  width: 40px;
+}
+
+
+/*FOOTER*/
+
+/* Style pour le formulaire de déconnexion */
+form[action*="logout"] {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* Style pour le bouton de déconnexion */
+.deconnexion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* ======= FOOTER PRINCIPAL ======= */
+.footer-quiz {
+  display: none; /* Caché sur mobile */
+  position: relative;
+  bottom: 0;
+  right: 0;
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .footer-quiz {
+    display: block;
+  }
+}
+
+/* ======= IMAGE DU FOOTER ======= */
+.footer-icon {
+  position: relative;
+  height: 150px;
+  width: 100%;
+  max-width: 130px;
+  overflow: hidden;
+  left: 90%;
+  bottom: 0rem;
+}

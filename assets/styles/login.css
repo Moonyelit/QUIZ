@@ -1,0 +1,260 @@
+/*HEADER*/
+.header-mobile-home {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-feu-tricolore {
+  height: 3vw;
+  max-width: 100%;
+}
+
+.mobile-point-interrogation {
+  display: none;
+}
+
+.titre-quiz-home {
+  font-size: 10vw;
+  text-align: center;
+  margin-top: 0rem;
+}
+
+
+
+@media (max-width: 1025px) {
+  .mobile-point-interrogation {
+    display: block;
+    height: 15vw;
+    width: auto;
+    max-width: 100%;
+  }
+
+
+  .titre-quiz-home {
+    font-size: 15vw;
+    padding: 5rem 0;
+  }
+
+}
+
+/*MAIN*/
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: -5rem;
+}
+
+.login-as {
+  margin-bottom: 0.75rem;
+}
+
+.label-pseudo {
+  font-family: "Changa One", serif;
+  font-size: 2.8vw;
+}
+
+.label-password {
+  font-family: "Changa One", serif;
+  font-size: 2vw;
+}
+
+.input-pseudo,
+.input-password {
+  width: 20%;
+  height: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 3px solid var(--primary-color);
+  border-radius: 1.5rem;
+  font-size: 0.8vw;
+}
+
+.sumbit-login{
+  text-align: center;
+  width: 20%;
+}
+
+.register-link{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+
+}
+
+.register-link > * {
+  width: 15%;
+}
+
+.register-link > p {
+  margin-bottom: -0.5rem;
+  font-size: 1.3vw;
+}
+
+.register-link > a {
+font-size: 1.4vw;
+}
+
+/*FOOTER*/
+
+.section-hidden {
+  display: none;
+}
+
+@media (min-width: 1025px) { 
+  .section-hidden {
+    display: block;
+  }
+}
+
+.section-block {
+  display: block;
+}
+
+@media (min-width: 1025px) { 
+  .section-block {
+    display: hidden;
+  }
+}
+.polygone-container-login {
+  position: absolute;
+  height: 700px;
+  width: 100%;
+  max-width: 560px;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.polygone-wrapper-login {
+  position: relative;
+  width: 100%;
+  height: 90%;
+}
+
+/* Positionnement des polygones */
+.polygone1-login {
+  position: absolute;
+  bottom: 337px;
+  left: 5%;
+}
+
+.polygone2-login {
+  position: absolute;
+  bottom: 218px;
+  left: 10%;
+}
+
+.polygone3-login {
+  position: absolute;
+  bottom: 100px;
+  left: 1px;
+}
+
+.polygone4-login {
+  position: absolute;
+  bottom: -2rem;
+  left: 37px;
+}
+
+.polygone5-login {
+  position: absolute;
+  bottom: -2rem;
+  left: 165px;
+}
+
+.polygone6-login {
+  position: absolute;
+  bottom: -2rem;
+  left: 250px;
+}
+
+/*MOBILE*/
+.polygone-section-phone {
+  position: relative;
+  display: block; 
+  z-index: -1;
+}
+
+@media (min-width: 1025px) { 
+  .polygone-section-phone {
+    display: none;
+  }
+}
+
+/* Conteneur des polygones */
+.polygone-container-phone {
+  position: absolute;
+  height: 400px;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+}
+
+.polygone-wrapper-phone {
+  position: relative;
+  width: 100%;
+  height: 90%;
+}
+
+/* Positionnement des polygones avec tailles dynamiques */
+.polygone1-phone {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+}
+
+.polygone2-phone {
+  position: absolute;
+  top: 80%;
+  left: 5%;
+}
+
+.polygone3-phone {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
+
+.polygone4-phone {
+  position: absolute;
+  top: 70%;
+  left: 45%;
+}
+
+.polygone5-phone {
+  position: absolute;
+  top: 85%;
+  left: 35%;
+}
+
+.polygone6-phone {
+  position: absolute;
+  top: 65%;
+  left: 22%;
+}
+
+/* Gestion des tailles d'images */
+.polygone-img-phone {
+  width: auto;
+  max-width: 70px;
+}
+
+@media (min-width: 768px) { 
+  .polygone-img-phone {
+    max-width: 100px;
+  }
+}
+

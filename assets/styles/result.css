@@ -1,0 +1,339 @@
+/*HEADER*/
+
+/*MOBILE*/
+/* ======= VERSION MOBILE ======= */
+.header-mobile {
+  position: relative;
+}
+
+.polygone-container-mobile {
+  position: relative;
+  height: 110px;
+  width: 105%;
+  overflow: hidden;
+  left: -1rem;
+}
+
+.polygone-wrapper-mobile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Positionnement des polygones */
+.polygone1-mobile {
+  position: absolute;
+  top: 7px;
+  left: 5%;
+}
+.polygone2-mobile {
+  position: absolute;
+  top: 7px;
+  left: 27%;
+}
+.polygone3-mobile {
+  position: absolute;
+  top: 7px;
+  left: 55%;
+}
+.polygone4-mobile {
+  position: absolute;
+  top: 7px;
+  left: 92%;
+}
+.polygone5-mobile {
+  position: absolute;
+  top: 27%;
+  left: 5%;
+}
+.polygone6-mobile {
+  position: absolute;
+  top: 45%;
+  left: 27%;
+}
+.polygone7-mobile {
+  position: absolute;
+  top: 30%;
+  left: 55%;
+}
+.polygone8-mobile {
+  position: absolute;
+  top: 47%;
+  left: 35%;
+}
+.polygone9-mobile {
+  position: absolute;
+  top: 48%;
+  left: 82%;
+}
+.polygone10-mobile {
+  position: absolute;
+  top: 78%;
+  left: 82%;
+}
+
+@media (min-width: 795px) {
+  .polygone-container-mobile {
+    height: 140px;
+  }
+}
+@media (min-width: 795px) {
+  .header-mobile {
+    display: none;
+  } /* Cache la version mobile sur desktop */
+}
+
+.section-header-desktop {
+  display: none;
+}
+/* ======= HEADER DESKTOP ======= */
+@media screen and (min-width: 795px) {
+  .section-header-desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .section-header-desktop-left {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    top: 0;
+    left: 0;
+  }
+
+  .section-header-desktop-right-div {
+    position: relative;
+    height: 325px;
+    width: 100%;
+    max-width: 210px;
+    top: 0;
+    left: 0;
+  }
+
+  .section-header-desktop-right-div2 {
+    position: relative;
+    width: 100%;
+    height: 230px;
+  }
+
+  .polygone1-desktop-left {
+    position: absolute;
+    top: 5%;
+    left: 0%;
+  }
+
+  .polygone2-desktop-left {
+    position: absolute;
+    top: 5%;
+    left: 45%;
+  }
+
+  .polygone3-desktop-left {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+  }
+
+  .polygone4-desktop-left {
+    position: absolute;
+    top: 45%;
+    left: 40%;
+  }
+
+  .div-quiz-name {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .div-quiz-name h1 {
+    position: relative;
+    max-width: 100%;
+    color: var(--dark-color);
+    font-size: 6vw;
+    bottom: 5rem;
+    right: 5rem;
+    margin-bottom: 6rem;
+  }
+
+  .section-header-desktop-div-interrogation {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    width: 10vw;
+  }
+
+  .section-header-desktop-div-interrogation img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/*MAIN*/
+
+.quiz-title {
+  display: block;
+}
+
+.quiz-title {
+  position: relative;
+  max-width: 100%;
+  color: var(--dark-color);
+  font-size: 10vw;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+/* ======= HEADER DESKTOP ======= */
+@media screen and (min-width: 795px) {
+  .quiz-title {
+    display: none;
+  }
+}
+
+.podium-article {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: center;
+  text-align: center;
+}
+
+.podium-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.podium-div p {
+  color: black;
+  font-size: 2rem;
+}
+
+.podium-div span {
+  color: gray;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Ajout des règles pour les écrans mobiles */
+@media screen and (max-width: 630px) {
+  .podium-div img {
+    width: 5rem;
+    height: auto;
+  }
+
+  .podium-div p {
+    font-size: 1.2rem;
+  }
+
+  .podium-div span {
+    font-size: 0.8rem;
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 1s ease forwards;
+}
+
+.podium-item {
+  opacity: 0;
+}
+
+.article-footer {
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.article-footer h3 {
+  font-size: 2.5rem;
+}
+
+.article-footer h4 {
+  font-size: 2rem;
+  color: black;
+}
+
+
+.form-footer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+/*FOOTER*/
+.footerResult {
+  display: none; /* Caché par défaut */
+}
+
+@media screen and (min-width: 630px) {
+.footerResult{
+  display: flex;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  justify-content: end;
+}
+
+.footerResult-div{
+  display: flex;
+  height: 325px;
+  width: 100%;
+  max-width: 220px;
+  overflow: hidden;
+  bottom: 0;
+  right: 0;
+}
+
+.footerResult-div2{
+position: relative;
+width: 100%;
+height: 230px;
+}
+
+.polygone1-footer{
+  position: absolute;
+  bottom:5%;
+  left: 5%;
+}
+
+.polygone2-footer{
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+}
+
+.polygone3-footer{
+  position: absolute;
+  bottom: -8%;
+  right: 15%;
+}
+
+.polygone4-footer{
+  position: absolute;
+  bottom: -24%;
+  right: 40%;
+}
+
+.polygone5-footer{
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+}
+}
