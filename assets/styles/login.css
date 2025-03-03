@@ -49,6 +49,8 @@
   margin-top: -5rem;
 }
 
+
+
 .login-as {
   margin-bottom: 0.75rem;
 }
@@ -71,12 +73,32 @@
   padding: 0.5rem;
   border: 3px solid var(--primary-color);
   border-radius: 1.5rem;
-  font-size: 0.8vw;
+  font-size: 0.8rem;
 }
+
+
+
 
 .sumbit-login{
   text-align: center;
   width: 20%;
+}
+
+@media screen and (max-width: 780px) {
+  .input-pseudo,
+  .input-password {
+   width: 45%;
+  }
+
+  .sumbit-login{
+    width: 40%;
+  }
+
+  .label-pseudo,
+  .label-password {
+    font-size: 1.5rem;
+  }
+
 }
 
 .register-link{
@@ -97,12 +119,21 @@
 
 .register-link > p {
   margin-bottom: -0.5rem;
-  font-size: 1.3vw;
+  font-size: 1.2rem;
 }
 
 .register-link > a {
-font-size: 1.4vw;
+font-size: 1.4rem;
 }
+
+@media screen and (max-width: 780px) {
+  .register-link > * {
+    width: 45%;
+  }
+
+
+}
+
 
 /*FOOTER*/
 

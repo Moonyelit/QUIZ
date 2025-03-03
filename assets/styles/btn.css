@@ -9,6 +9,8 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
   }
+
+
   
   .btn-custom {
     background-color: var(--dark-color);
@@ -48,3 +50,10 @@
     color: var(--dark-color);
     transform: scale(1.025);
   }
+
+@media screen and (max-width: 780px) {
+  .btn {
+    font-size: 1.25rem;  /* Taille réduite pour les petits écrans */
+    padding: 1rem;       /* Optionnel: réduire aussi le padding */
+  }
+}
